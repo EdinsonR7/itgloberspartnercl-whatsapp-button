@@ -1,0 +1,17 @@
+.whatsapp_logo {
+  position          : fixed;
+  right             : 10px;
+  bottom            : 20%;
+  z-index           : 123;
+  padding           : 5px 10px;
+  background-color  : #00b939;
+  border            : 1px solid #00b939;
+  border-radius     : 30px;
+  -webkit-transition: all .5s;
+  transition        : all .5s;
+  cursor            : pointer;
+}
+
+.whatsapp_hove :hover {
+  background-color: azure
+}

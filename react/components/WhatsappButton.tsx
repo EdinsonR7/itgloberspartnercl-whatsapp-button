@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import { useCssHandles } from 'vtex.css-handles'
+import './styles.css'
 
 
 type Props = {
@@ -9,24 +10,32 @@ type Props = {
     message: string //Bienvenido es un gusto atenderte en que podemos servirte.
     width: number //60px
     height: number //60px
-  
+
 
 }
+
 const WhatsappButton = ({ logo, phone, message, width, height }: Props) => {
-    const formattedMessage = message.replace(/ /g, " ")
-    console.log("Mi mensaje formateado es", formattedMessage, logo)
+
+
+  const CSS_HANDLES = ['whatsapp_logo', 'whatsapp_hove']
+  const handles = useCssHandles(CSS_HANDLES)
+  const formattedMessage = message.replace(/ /g, " ")
+
+// console.log("Mi mensaje formateado es", formattedMessage, logo)
+
     return <>
-        <div className='fixed bottom-2 right-2 flex flexColumn 7 z-max'>
+        <div className={`${handles['whatsapp_hove']}`}>
             <a
                 href={`https://wa.me/${phone}?text=${formattedMessage}`}
                 target="_blank"
                 rel="noreferrer noopener"
             >
-                <img 
-                src={logo} 
-                width={width} 
-                height={height} 
-                alt="Logo de WhatsApp" 
+                <img
+                className={`${handles['whatsapp_logo']}`}
+                src={logo}
+                width={width}
+                height={height}
+                alt="Logo de WhatsApp"
                 />
             </a>
         </div>
@@ -39,15 +48,15 @@ WhatsappButton.propTypes = {
     message: PropTypes.string,
     width: PropTypes.number,
     height: PropTypes.number
-   
+
 }
 WhatsappButton.defaultProps = {
     logo: "mi-logo.png",
     phone: "3102222255",
     message: "Si tienes alguna inquietud comunicate con nosotros",
-    width: 60,
-    height: 60
-   
+    width: 43,
+    height: 47
+
 
 }
 WhatsappButton.schema = {
@@ -84,7 +93,7 @@ WhatsappButton.schema = {
             description: "Agrega el número de télefono",
             type: "number",
         }
-       
+
     }
 }
 
